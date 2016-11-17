@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block meta_header %}{% if article and article.meta %}
+    <meta name="description" content="{{ article.meta }}">
+{% endif %}{% endblock %}
+
+{% block title %}{% if article %}{{ article.title }} - {% endif %}{% endblock %}
+
+{% block banner %}
+  {% include "banner.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% if article %}
+  <div class="row">
+    <div class="col-md-8">
+      <h1 style="font-size: 36px;">{{ article.title }}</h1>
+      <div class="post-byline">
+        Posted by <a href="/about-author.html">Matt Makai</a> on 
+        {{ article.date.strftime('%B %d, %Y') }}.
+        {% if article.modified != article.date %}Last updated
+        {{ article.modified.strftime('%B %d, %Y') }}.{% endif %}
+      </div>
+      <!--<div width="100%" style="margin: 5px 0 10px 0; height: 250px; overflow: hidden; border-radius: 12px;">
+          <img src="{{ article.headerimage }}" alt="{{ article.headeralt }}" width="100%" style="height: 500px; margin: -100px 0 -100px 0;">
+      </div>-->
+      {{ article.content }}
+      <hr>
+      {% endif %}
+    </div>
+    <div class="col-md-offset-1 col-md-3">
+      {% include "article-sidebar.html" %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block lower_banner %}
+{% endblock %}
