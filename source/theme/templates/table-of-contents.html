@@ -8,10 +8,10 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <h1>Table of Contents</h1>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="list-group">
           <h3>1. <a href="/introduction.html">Introduction</a></h3>
           <h4 class="toc-subsection">1.1 <a href="#">Learning Java</a></h4>
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="list-group">
           <h3>2. Meta</h3>
           <div class="toc"><a href="/about-author.html">About Author</a></div>
@@ -36,9 +36,13 @@
 <div class="row">
     <div class="col-md-12">
         <h2><a href="/blog.html">Blog Posts</a></h2>
-        {% for a in articles %}
-            <h4 style="padding-bottom: 6px; line-height: 1.25em;"><a href="/blog/{{ a.slug }}.html">{{ a.title }}</a></h4>
-        {% endfor %}
+        {% if articles %}
+          {% for a in articles %}
+          <h4 style="padding-bottom: 6px; line-height: 1.25em;"><a href="/blog/{{ a.slug }}.html">{{ a.title }}</a></h4>
+          {% endfor %}
+        {% else %}
+          <span class="sans-font">No posts yet.</span>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
