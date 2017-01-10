@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Luke and Matt Makai">
+    <meta name="description" content="This tutorial shows how to configure a Java development environment on Windows 10 for Google Web Toolkit, Maven and IntelliJ.">
+  <link rel="shortcut icon" href="/source/static/img/logo.png">
+  <title>Setting Up IntelliJ IDEA, Maven and Google Web Toolkit (GWT) for Java Development on Windows 10 - Full Stack Java</title>
+  <link href="/source/static/css/f.css" rel="stylesheet">
+</head>
+<body>
+  <a href="https://github.com/mattmakai/fullstackjava.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/source/static/img/fork.png" alt="Fork me on GitHub"></a>
+  <div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <div class="logo-header-section">
+      <a href="/" style="text-decoration: none; border: none;"><img src="/source/static/img/logo.png" height="52" width="52" class="logo-image" style="padding-top: 1px;" alt="Full Stack Java logo"></a>
+      <span class="logo-title"><a href="/">Full Stack Java</a></span>
+    </div>
+<div class="sans-font">
+    <a href="/table-of-contents.html" class="submenu-item-first">All topics</a> 
+    <!--
+    <span style="margin:0 12px 0 12px">|</span>
+    <a href="/blog.html" class="submenu-item">Blog</a>
+    -->
+    <span style="margin:0 12px 0 12px">|</span>
+    <a href="https://twitter.com/fullstackjava" class="submenu-item">@fullstackjava</a>
+    <span style="margin:0 12px 0 12px">|</span>
+    <!-- <a href="https://www.facebook.com/fullstackpython" class="submenu-item">Facebook</a> <span style="margin:0 12px 0 12px">|</span> -->
+    <a href="https://github.com/mattmakai/fullstackjava.com" class="submenu-item">Source</a> 
+</div>  </div>
+</div>  <div class="row">
+    <div class="col-md-9">
+      <h1 style="font-size: 36px;">Setting Up IntelliJ IDEA, Maven and Google Web Toolkit (GWT) for Java Development on Windows 10</h1>
+      <div class="post-byline">
+        Posted by <a href="/about-author.html">Matt Makai</a> on 
+        January 05, 2017.
+      </div>
+      <!--<div width="100%" style="margin: 5px 0 10px 0; height: 250px; overflow: hidden; border-radius: 12px;">
+          <img src="/source/static/img/170105-intellij-gwt-maven-windows/header.jpg" alt="Java, Maven, Google Web Toolkit and IntelliJ logos. Copyright their respective owners." width="100%" style="height: 500px; margin: -100px 0 -100px 0;">
+      </div>-->
+      <p>Establishing a fresh Java development environment can be confusing but this
+guide will quickly walk you through the steps to get set up on Windows 10.</p>
+<h2>Our Tools</h2>
+<p>Our configuration walkthrough will involve several tools. Don't install
+these bits just yet: we will walk through the steps together in a moment.</p>
+<ul>
+<li>Java 8 JDK</li>
+<li>JetBrains' IntelliJ IDEA the Java Integrated Development Environment (IDE)</li>
+<li>Apache Maven build and configuration tool</li>
+<li>Google Web Toolkit (GWT) web framework</li>
+</ul>
+<p>Time to dive in and install our first tool.</p>
+<h2>Installing Java 8</h2>
+<p>Start Windows and go to the Java 8 JDK downloads page in your web browser.
+Read and accept the licensing agreement. Download the latest release of 
+the Windows x64 Java SE Development Kit.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/download-java-8-jdk.jpg" width="100%" class="technical-diagram img-rounded" alt="Java 8 JDK download page."></p>
+<p>When the download completes, run the executable. Allow the installer to make 
+changes to your system.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/allow-changes.jpg" width="100%" class="technical-diagram img-rounded" alt="Java 8 JDK make changes approval screen."></p>
+<p>Move through the installer and when you reach the following screen
+press the "Change..." button.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/jdk-change-directory.jpg" width="100%" class="technical-diagram img-rounded" alt="Change JDK installation directory."></p>
+<p>Modify the installation directory to <code>C:\devel\Java\jdk180_112</code> (or modify
+the numbers based on the security release version you downloaded). Generally
+it is easier to work with Java on the command line if there are no spaces 
+in the directory names.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/devel-jdk-install.jpg" width="100%" class="technical-diagram img-rounded" alt="Change JDK installation directory."></p>
+<p>Also change the JRE installation directory to somewhere without spaces.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/change-jre-directory.jpg" width="100%" class="technical-diagram img-rounded" alt="Change JRE installation directory."></p>
+<p>Finish the installation process. Java will be added to your <code>PATH</code> 
+environment variable but we also need to set <code>JAVA_HOME</code>. Open system
+system settings for environment variables by searching for the term
+"environment variables" next to the Start menu.</p>
+<p>Settings by right clicking on the Start menu. Add a new environment
+variable named <code>JAVA_HOME</code> with the value of the base directory to
+your Java 8 JDK installation (not the <code>bin</code> subdirectory).</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/environment-variables.jpg" width="100%" class="technical-diagram img-rounded" alt="Set JAVA_HOME under environment variables."></p>
+<p>In this case, I installed the JDK to <code>C:\devel\Java\jdk180_112</code> so I set 
+that as the value of <code>JAVA_HOME</code>.</p>
+<p>Test that our installation proceeded correctly by opening up the 
+command prompt. Search for "cmd" in the task bar search menu.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/cmd-search.jpg" width="100%" class="technical-diagram img-rounded" alt="Command prompt search."></p>
+<p>Type <code>java -version</code> and press enter. You should see the exact Java version 
+you just installed. That means you are good to go with the JDK.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/java-version.jpg" width="100%" class="technical-diagram img-rounded" alt="Java version on the command line."></p>
+<p>Now that we have Java properly installed, we can set up Maven for our 
+project builds and dependency management.</p>
+<h2>Installing Maven</h2>
+<p>Head to the Apache Maven download page and grab the "binary zip 
+archive" of the project. </p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/maven-download.jpg" width="100%" class="technical-diagram img-rounded" alt="Apache Maven download page."></p>
+<p>After the file finishes downloading, open it using File Explorer. Copy 
+the directory within the zip file into your <code>C:\devel</code> folder.  </p>
+<p>Add <code>C:\devel\maven\bin</code> (or whichever version you downloaded) as a value
+in your <code>PATH</code> environment variable.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/add-maven-to-path.jpg" width="100%" class="technical-diagram img-rounded" alt="Add Maven to PATH environment variable."></p>
+<p>Re-open the command prompt because environment variable changes such as this
+one to the PATH variable only take effect within new command prompt windows, 
+not ones that are already open.</p>
+<p>Run <code>mvn -version</code> while <em>not</em> currently in the Maven installation directory. 
+You should see output similar to the following text.</p>
+<div class="highlight"><pre><span></span>C:\devel&gt;mvn -version
+Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T08:41:47-08:00)
+Maven home: C:\devel\apache-maven-3.3.9\bin\..
+Java version: 1.8.0_112, vendor: Oracle Corporation
+Java home: C:\devel\Java\jdk180_112\jre
+Default locale: en_US, platform encoding: Cp1252
+OS name: &quot;windows 10&quot;, version: &quot;10.0&quot;, arch: &quot;amd64&quot;, family: &quot;dos&quot;
+</pre></div>
+
+
+<p>If you instead receive an error stating that the <code>mvn</code> command cannot be found,
+double check that Maven's <code>bin</code> directory was correctly set in the PATH variable.</p>
+<p>We can next move on to installing Google Web Toolkit now that the Java JDK and
+Maven are configured.</p>
+<h2>Downloading and Configuring GWT</h2>
+<p><a href="http://www.gwtproject.org/download.html">Download GWT</a> and extract the
+folder into <code>C:\devel</code> just as we did with Java and Maven.</p>
+<p>The only step we need to do is also add the base GWT directory to our
+PATH environment variable. Open the System Properties and Environment
+Variables panel back up and add the GWT installation directory, such
+as <code>C:\devel\gwt-2.8.0</code> as a value.</p>
+<p>Test out the configuration by closing any existing command prompt
+windows then opening a new one. Make sure your current directory is outside 
+the GWT directory and type <code>webAppCreator</code>, one of GWT's important 
+commands that creates new projects. If GWT was added to the <code>PATH</code> correctly
+then the output should look like the following text.</p>
+<div class="highlight"><pre><span></span>C:\devel&gt;webAppCreator
+Missing required argument &#39;moduleName&#39;                                                                                  Google Web Toolkit 2.8.0
+WebAppCreator [-[no]overwriteFiles] [-[no]ignoreExistingFiles] [-templates template1,template2,...] [-out dir] [-junit pathToJUnitJar] [-[no]maven] [-[no]ant] moduleName
+
+where
+  -[no]overwriteFiles       Overwrite any existing files. (defaults to OFF)
+  -[no]ignoreExistingFiles  Ignore any existing files; do not overwrite. (defaults to OFF)
+  -templates                Specifies the template(s) to use (comma separeted). Defaults to &#39;sample,ant,eclipse,readme&#39;
+  -out                      The directory to write output files into (defaults to current)
+  -junit                    Specifies the path to your junit.jar (optional)
+  -[no]maven                DEPRECATED: Create a maven2 project structure and pom file (default disabled). Equivalent to specifying &#39;maven&#39; in the list of templates. (defaults to OFF)
+  -[no]ant                  DEPRECATED: Create an ant configuration file. Equivalent to specifying &#39;ant&#39; in the list of templates. (defaults to OFF)
+and
+  moduleName                The name of the module to create (e.g. com.example.myapp.MyApp)
+</pre></div>
+
+
+<p>We can now create our first GWT web application project. Create a new directory
+for our project named <code>firstProject</code> (or the name you want for your own project)
+with the <code>mkdir</code> command, then move into that directory with <code>cd</code>:</p>
+<div class="highlight"><pre><span></span>mkdir firstProject
+cd firstProject
+</pre></div>
+
+
+<p>Type the following command within the <code>C:\devel</code> directory to create the
+boilerplate code for the GWT project.</p>
+<div class="highlight"><pre><span></span>webAppCreator com.fullstackjava.firstProject -templates &quot;sample,maven,readme&quot;
+</pre></div>
+
+
+<p>The <code>webAppCreator</code> will run and produce output like the following:</p>
+<div class="highlight"><pre><span></span>C:\devel\firstProject&gt;webAppCreator com.fullstackjava.firstProject -templates &quot;sample,maven,readme&quot;
+Generating from templates: [maven, readme, _sample-test, sample]
+Created directory C:\devel\firstProject\src\test\java
+Created directory C:\devel\firstProject\src\test\java\com\fullstackjava
+Created directory C:\devel\firstProject\src\test\java\com\fullstackjava\client
+Created directory C:\devel\firstProject\src\main\java
+Created directory C:\devel\firstProject\src\main\java\com\fullstackjava
+Created directory C:\devel\firstProject\src\main\java\com\fullstackjava\client
+Created directory C:\devel\firstProject\src\main\java\com\fullstackjava\server
+Created directory C:\devel\firstProject\src\main\java\com\fullstackjava\shared
+Created directory C:\devel\firstProject\src\main\webapp
+Created directory C:\devel\firstProject\src\main\webapp\WEB-INF
+Created file C:\devel\firstProject\pom.xml
+Created file C:\devel\firstProject\README.txt
+Created file C:\devel\firstProject\src\test\java\com\fullstackjava\firstProjectJUnit.gwt.xml
+Created file C:\devel\firstProject\src\test\java\com\fullstackjava\firstProjectSuite.java
+Created file C:\devel\firstProject\src\test\java\com\fullstackjava\client\firstProjectTest.java
+Created file C:\devel\firstProject\src\main\java\com\fullstackjava\firstProject.gwt.xml
+Created file C:\devel\firstProject\src\main\java\com\fullstackjava\client\GreetingService.java
+Created file C:\devel\firstProject\src\main\java\com\fullstackjava\client\GreetingServiceAsync.java
+Created file C:\devel\firstProject\src\main\java\com\fullstackjava\client\firstProject.java
+Created file C:\devel\firstProject\src\main\java\com\fullstackjava\server\GreetingServiceImpl.java
+Created file C:\devel\firstProject\src\main\java\com\fullstackjava\shared\FieldVerifier.java
+Created file C:\devel\firstProject\src\main\webapp\WEB-INF\web.xml
+Created file C:\devel\firstProject\src\main\webapp\firstProject.css
+Created file C:\devel\firstProject\src\main\webapp\firstProject.html
+Created file C:\devel\firstProject\src\main\webapp\favicon.ico
+</pre></div>
+
+
+<p>GWT's <code>webAppCreator</code> command just built a new project with the necessary 
+project structure to use Maven as our build tool.</p>
+<p>Next we can set up IntelliJ as our Java integrated development environment.</p>
+<h2>Setting up the IntelliJ Java IDE</h2>
+<p>In your web browser go to the JetBrains' IDEA Java IDE downloads page.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/intellij-download.jpg" width="100%" class="technical-diagram img-rounded" alt="IntelliJ IDEA download page."></p>
+<p>Download the Ultimate Edition then open the downloaded <code>.exe</code> file.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/associate-file-names-intellij.png" width="100%" class="technical-diagram img-rounded" alt="Associate file names IntelliJ."></p>
+<p>Check the boxes to associate <code>.java</code>, <code>.groovy</code> and <code>.kt</code> files with IntelliJ.
+Complete the installation and check the box to run IntelliJ when done.</p>
+<p><img src="/source/static/img/170105-intellij-gwt-maven-windows/import-settings.png" width="100%" class="technical-diagram img-rounded" alt="Import settings from old IntelliJ."></p>
+<p>Read and accept the JetBrains Privacy Policy. Select "Evaluate for free" to 
+use the free 30 day trial until you are ready to activate the full license.</p>
+<p>You can now customize your settings or skip them for now and accept the 
+defaults. Press the "Skip All and Set Defaults" button as the IDE will already 
+have the settings we need for GWT development.</p>
+<p>Move back over to the command prompt. We will test that Maven works with
+the GWT project. Enter the following command from within the <code>firstProject</code> 
+base directory where the <code>pom.xml</code> file was generated:</p>
+<div class="highlight"><pre><span></span>mvn compile
+</pre></div>
+
+
+<p>There will be a slew of output while Maven downloads the appropriate
+project build dependencies. Maven should conclude with a <code>BUILD SUCCESS</code>
+message like this one:</p>
+<div class="highlight"><pre><span></span>[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to C:\devel\firstProject\target\firstProject-1.0-SNAPSHOT\WEB-INF\classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 24.297 s
+[INFO] Finished at: 2017-01-09T17:24:27-08:00
+[INFO] Final Memory: 24M/171M
+[INFO] ------------------------------------------------------------------------
+</pre></div>
+
+
+<p>Now the project is ready for some real work!</p>
+<h2>Next Steps</h2>
+<p>You are all set to get cranking building your GWT app now that your local 
+development environment is configured. Next you will want to take a 
+look at the Twilio Voice, Twilio SMS and TaskRouter quickstarts to add 
+communications into your new application.</p>
+<p>Questions? Contact me via Twitter 
+<a href="https://twitter.com/fullstackjava">@fullstackjava</a>
+or <a href="https://twitter.com/mattmakai">@mattmakai</a>. I'm also on GitHub as
+<a href="https://github.com/mattmakai">mattmakai</a>.</p>
+<p>Something wrong with this post? Fork 
+<a href="https://github.com/mattmakai/fullstackjava.com/blob/gh-pages/source/content/posts/170105-java-8-dev-env-windows-intellij-maven-gwt.markdown">this page's source on GitHub</a>.</p>
+      <hr>
+    </div>
+    <div class="col-md-3">
+<div class="panel" id="sidebar">
+  <div class="panel-heading">
+    <h3 class="panel-head">Learn more about these concepts</h3>
+  </div>
+  <img src="/source/static/img/170105-intellij-gwt-maven-windows/header.jpg" alt="Java, Maven, Google Web Toolkit and IntelliJ logos. Copyright their respective owners." width="100%"> 
+  <div class="list-group">
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html" class="list-group-item smaller-item">Java 8 JDK <svg width="20" height="12" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1408 928v320q0 119-84.5 203.5t-203.5 84.5h-832q-119 0-203.5-84.5t-84.5-203.5v-832q0-119 84.5-203.5t203.5-84.5h704q14 0 23 9t9 23v64q0 14-9 23t-23 9h-704q-66 0-113 47t-47 113v832q0 66 47 113t113 47h832q66 0 113-47t47-113v-320q0-14 9-23t23-9h64q14 0 23 9t9 23zm384-864v512q0 26-19 45t-45 19-45-19l-176-176-652 652q-10 10-23 10t-23-10l-114-114q-10-10-10-23t10-23l652-652-176-176q-19-19-19-45t19-45 45-19h512q26 0 45 19t19 45z"/></svg></a>    <a href="/table-of-contents.html" class="list-group-item smaller-item" style='background-color:#444; color: #fff;'>...or <span style="border-bottom: 1px dotted;">view all topics</span>.</a>
+  </div>
+</div>    </div>
+  </div>
+    <hr/>
+  </div> 
+<div class="container">
+  <div class="footer sans-font pull-right">
+    <strong>Full Stack Java</strong>
+    <span style="margin:0 4px 0 4px">/</span> 
+    <a href="https://www.fullstackpython.com/">Python</a>
+    <span style="margin:0 4px 0 4px">/</span> 
+    <a href="http://www.fullstackswift.com/">Swift</a>
+    by
+    <a href="https://github.com/mattmakai" class="underline">Matt Makai</a> 
+    2017
+  </div>
+</div><script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-19910497-17', 'auto');
+ga('send', 'pageview'); 
+</script></body>
+</html>
