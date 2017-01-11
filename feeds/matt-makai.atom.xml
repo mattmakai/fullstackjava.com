@@ -5,14 +5,15 @@ guide will quickly walk you through the steps to get set up on Windows 10.&lt;/p
 &lt;p&gt;Our configuration walkthrough will involve several tools. Don't install
 these bits just yet: we will walk through the steps together in a moment.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Java 8 JDK&lt;/li&gt;
-&lt;li&gt;JetBrains' IntelliJ IDEA the Java Integrated Development Environment (IDE)&lt;/li&gt;
-&lt;li&gt;Apache Maven build and configuration tool&lt;/li&gt;
-&lt;li&gt;Google Web Toolkit (GWT) web framework&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"&gt;Java 8 JDK&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.jetbrains.com/idea/"&gt;JetBrains' IntelliJ IDEA the Java Integrated Development Environment (IDE)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://maven.apache.org/"&gt;Apache Maven build and configuration tool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.gwtproject.org/"&gt;Google Web Toolkit (GWT) web framework&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Time to dive in and install our first tool.&lt;/p&gt;
 &lt;h2&gt;Installing Java 8&lt;/h2&gt;
-&lt;p&gt;Start Windows and go to the Java 8 JDK downloads page in your web browser.
+&lt;p&gt;Start Windows and go to the 
+&lt;a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"&gt;Java 8 JDK downloads page in your web browser&lt;/a&gt;.
 Read and accept the licensing agreement. Download the latest release of 
 the Windows x64 Java SE Development Kit.&lt;/p&gt;
 &lt;p&gt;&lt;img src="/source/static/img/170105-intellij-gwt-maven-windows/download-java-8-jdk.jpg" width="100%" class="technical-diagram img-rounded" alt="Java 8 JDK download page."&gt;&lt;/p&gt;

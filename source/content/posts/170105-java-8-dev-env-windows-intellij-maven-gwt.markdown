@@ -16,16 +16,17 @@ guide will quickly walk you through the steps to get set up on Windows 10.
 Our configuration walkthrough will involve several tools. Don't install
 these bits just yet: we will walk through the steps together in a moment.
 
-* Java 8 JDK
-* JetBrains' IntelliJ IDEA the Java Integrated Development Environment (IDE)
-* Apache Maven build and configuration tool
-* Google Web Toolkit (GWT) web framework
+* [Java 8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [JetBrains' IntelliJ IDEA the Java Integrated Development Environment (IDE)](https://www.jetbrains.com/idea/)
+* [Apache Maven build and configuration tool](https://maven.apache.org/)
+* [Google Web Toolkit (GWT) web framework](http://www.gwtproject.org/)
 
 Time to dive in and install our first tool.
 
 
 ## Installing Java 8
-Start Windows and go to the Java 8 JDK downloads page in your web browser.
+Start Windows and go to the 
+[Java 8 JDK downloads page in your web browser](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 Read and accept the licensing agreement. Download the latest release of 
 the Windows x64 Java SE Development Kit.
 
